@@ -1,0 +1,9 @@
+<h1>Users</h1>
+
+<div>
+  <ul>
+    <%= for user <- @users do %>
+      <li><%= user.email %> - (<%= link "View", to: user_path(@conn, :show, user) %>)</li>
+    <% end %>
+  </ul>
+</div>
