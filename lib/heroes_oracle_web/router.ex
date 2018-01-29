@@ -9,16 +9,14 @@ defmodule HeroesOracleWeb.Router do
     plug :put_secure_browser_headers
     plug Guardian.Plug.Pipeline, module: HeroesOracle.Guardian,
                              error_handler: HeroesOracleWeb.HttpErrorHandler
-    # plug Guardian.Plug.VerifySession, %{handler: HeroesOracleWeb.HttpErrorHandler}
-    plug Guardian.Plug.VerifyHeader
-    # plug Guardian.Plug.LoadResource
+    plug Guardian.Plug.VerifySession, claims: %{"typ" => "access"}
+    plug Guardian.Plug.VerifyHeader, claims: %{"typ" => "access"}
   end
 
   pipeline :browser_auth do
-    # plug Guardian.Plug.Pipeline, module: HeroesOracle.Guardian,
-    #                        error_handler: HeroesOracleWeb.HttpErrorHandler
     plug Guardian.Plug.EnsureAuthenticated
   #   plug Guardian.Plug.EnsureAuthenticated, %{"typ" => "access", handler: HeroesOracleWeb.HttpErrorHandler}
+    plug Guardian.Plug.LoadResource
   end
 
   pipeline :api do
@@ -30,7 +28,8 @@ defmodule HeroesOracleWeb.Router do
 
     get "/", PageController, :index
     resources "/users", UserController, only: [:new, :create]
-    resources "/sessions", SessionController, only: [:new, :create, :delete]
+    resources "/sessions", SessionController, only: [:new, :create]
+    get "/sessions", SessionController, :delete
   end
 
   scope "/", HeroesOracleWeb do

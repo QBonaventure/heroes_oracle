@@ -1,5 +1,5 @@
 defmodule HeroesOracle.Auth do
-  import Comeonin.Bcrypt, only: [checkpw: 2, dummy_checkpw: 0]
+  import Comeonin.Bcrypt
   import Plug.Conn
 
   alias HeroesOracle.User
@@ -7,7 +7,7 @@ defmodule HeroesOracle.Auth do
 
   def login(conn, user) do
     conn
-    |> Guardian.Plug.sign_in(user, :access)
+    |> HeroesOracle.Guardian.Plug.sign_in(user)
   end
 
   def login_by_email_and_pass(conn, email, given_pass, opts) do
@@ -16,7 +16,7 @@ defmodule HeroesOracle.Auth do
 
     cond do
       user && checkpw(given_pass, user.password_hash) ->
-        {:ok, login(conn, user)}
+        {:ok, login(conn, %User{email: user.email, id: user.id})}
       user ->
         {:error, :unauthorized, conn}
       true ->

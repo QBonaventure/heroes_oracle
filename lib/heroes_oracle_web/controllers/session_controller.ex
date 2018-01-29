@@ -24,7 +24,7 @@ defmodule HeroesOracleWeb.SessionController do
 
 def delete(conn, _) do
   conn
-  |> Guardian.Plug.sign_out
+  |> HeroesOracle.Guardian.Plug.sign_out
   |> redirect(to: "/")
 end
 end
