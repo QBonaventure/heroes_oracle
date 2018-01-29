@@ -28,13 +28,14 @@ defmodule HeroesOracleWeb.Router do
 
     get "/", PageController, :index
     resources "/users", UserController, only: [:new, :create]
+    resources "/heroes", HeroController
     resources "/sessions", SessionController, only: [:new, :create]
     get "/sessions", SessionController, :delete
   end
 
   scope "/", HeroesOracleWeb do
     pipe_through [:browser, :browser_auth]
-      # pipe_through [:browser, :browser_auth]
+
     resources "/users", UserController, only: [:show, :update, :index]
   end
 

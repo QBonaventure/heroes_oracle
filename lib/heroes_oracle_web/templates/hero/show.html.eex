@@ -1,0 +1,13 @@
+<h2>Show Hero</h2>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @hero.name %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: hero_path(@conn, :edit, @hero) %></span>
+<span><%= link "Back", to: hero_path(@conn, :index) %></span>
