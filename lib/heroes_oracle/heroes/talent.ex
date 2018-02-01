@@ -1,13 +1,14 @@
 defmodule HeroesOracle.Heroes.Talent do
   use Ecto.Schema
   import Ecto.Changeset
-  alias HeroesOracle.Heroes.Talent
+  alias HeroesOracle.Heroes.{Talent, Hero}
 
 
   schema "talents" do
     field :description, :string
     field :level, :integer
     field :name, :string
+    belongs_to :hero, Hero
 
     timestamps()
   end

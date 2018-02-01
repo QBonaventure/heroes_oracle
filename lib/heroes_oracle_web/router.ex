@@ -36,6 +36,7 @@ defmodule HeroesOracleWeb.Router do
   scope "/", HeroesOracleWeb do
     pipe_through [:browser, :browser_auth]
 
+    resources "/heroes/:id/aspects", AspectController
     resources "/users", UserController, only: [:show, :update, :index]
   end
 

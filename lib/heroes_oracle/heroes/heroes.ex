@@ -6,7 +6,7 @@ defmodule HeroesOracle.Heroes do
   import Ecto.Query, warn: false
   alias HeroesOracle.Repo
 
-  alias HeroesOracle.Heroes.Hero
+  alias HeroesOracle.Heroes.{Hero, HeroType, HeroRole}
 
   @doc """
   Returns the list of heroes.
@@ -18,7 +18,12 @@ defmodule HeroesOracle.Heroes do
 
   """
   def list_heroes do
-    Repo.all(Hero)
+    Hero
+    |> Repo.all()
+    |> Repo.preload(:role)
+    |> Repo.preload(:type)
+    # |> Repo.preload(:talents)
+    # |> Repo.preload(:aspects)
   end
 
   @doc """
@@ -35,7 +40,14 @@ defmodule HeroesOracle.Heroes do
       ** (Ecto.NoResultsError)
 
   """
-  def get_hero!(id), do: Repo.get!(Hero, id)
+  def get_hero!(id) do
+    Hero
+    |> Repo.get!(id)
+    |> Repo.preload(:role)
+    |> Repo.preload(:type)
+    # |> Repo.preload(:talents)
+    # |> Repo.preload(:aspects)
+  end
 
   @doc """
   Creates a hero.
@@ -102,17 +114,18 @@ defmodule HeroesOracle.Heroes do
     Hero.changeset(hero, %{})
   end
 
+
+  def list_heroes_roles do
+    Repo.all(HeroRole)
+  end
+
+  def list_heroes_types do
+    Repo.all(HeroType)
+  end
+
+
   alias HeroesOracle.Heroes.Talent
 
-  @doc """
-  Returns the list of talents.
-
-  ## Examples
-
-      iex> list_talents()
-      [%Talent{}, ...]
-
-  """
   def list_talents do
     Repo.all(Talent)
   end

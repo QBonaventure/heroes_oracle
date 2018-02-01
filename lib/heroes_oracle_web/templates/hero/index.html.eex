@@ -4,7 +4,8 @@
   <thead>
     <tr>
       <th>Name</th>
-
+      <th>Role</th>
+      <th>Type</th>
       <th></th>
     </tr>
   </thead>
@@ -12,6 +13,8 @@
 <%= for hero <- @heroes do %>
     <tr>
       <td><%= hero.name %></td>
+      <td><%= hero.role.name %></td>
+      <td><%= hero.type.name %></td>
 
       <td class="text-right">
         <span><%= link "Show", to: hero_path(@conn, :show, hero), class: "btn btn-default btn-xs" %></span>

@@ -12,6 +12,19 @@
   </div>
 
   <div class="form-group">
+    <%= label f, :select_a_role, class: "control-label" %>
+    <%= select f, :role_id, [{"", nil}] ++ @heroes_roles, class: "form-control" %>
+    <%= error_tag f, :role_id %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :select_a_type, class: "control-label" %>
+    <%= select f, :type_id, [{"", nil}] ++ @heroes_types, class: "form-control" %>
+    <%= error_tag f, :type_id %>
+  </div>
+
+
+  <div class="form-group">
     <%= submit "Submit", class: "btn btn-primary" %>
   </div>
 <% end %>
