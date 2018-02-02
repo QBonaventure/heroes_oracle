@@ -6,7 +6,7 @@ defmodule HeroesOracle.Heroes.Hero do
 
   schema "heroes" do
     field :name, :string
-
+    has_many :talents, Talent
     belongs_to :role, HeroRole, foreign_key: :role_id
     belongs_to :type, HeroType, foreign_key: :type_id
 

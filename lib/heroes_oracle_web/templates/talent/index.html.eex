@@ -1,0 +1,30 @@
+<h2>Listing Talents</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Level</th>
+      <th>Name</th>
+      <th>Description</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for talent <- @hero.talents do %>
+    <tr>
+      <td><%= talent.level %></td>
+      <td><%= talent.name %></td>
+      <td><%= talent.description %></td>
+
+      <td class="text-right">
+        <span><%= link "Show", to: hero_talent_path(@conn, :show, :hero_id, talent), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Edit", to: hero_talent_path(@conn, :edit, :hero_id, talent), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Delete", to: hero_talent_path(@conn, :delete, :hero_id, talent), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Talent", to: hero_talent_path(@conn, :new, @hero) %></span>

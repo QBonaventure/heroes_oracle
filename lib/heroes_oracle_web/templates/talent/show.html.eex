@@ -1,0 +1,23 @@
+<h2>Show Talent</h2>
+
+<ul>
+
+  <li>
+    <strong>Level:</strong>
+    <%= @talent.level %>
+  </li>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @talent.name %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @talent.description %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: hero_talent_path(@conn, :edit, @talent.hero_id, @talent) %></span>
+<span><%= link "Back", to: hero_talent_path(@conn, :index, @talent.hero_id) %></span>

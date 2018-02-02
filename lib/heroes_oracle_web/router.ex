@@ -28,7 +28,9 @@ defmodule HeroesOracleWeb.Router do
 
     get "/", PageController, :index
     resources "/users", UserController, only: [:new, :create]
-    resources "/heroes", HeroController
+    resources "/heroes", HeroController do
+      resources "/talents", TalentController
+    end
     resources "/sessions", SessionController, only: [:new, :create]
     get "/sessions", SessionController, :delete
   end

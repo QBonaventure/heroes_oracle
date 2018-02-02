@@ -1,14 +1,14 @@
 defmodule HeroesOracle.Heroes.Talent do
   use Ecto.Schema
   import Ecto.Changeset
-  alias HeroesOracle.Heroes.{Talent, Hero}
+  alias HeroesOracle.Heroes.Talent
 
 
   schema "talents" do
     field :description, :string
     field :level, :integer
     field :name, :string
-    belongs_to :hero, Hero
+    field :hero_id, :id
 
     timestamps()
   end
@@ -16,7 +16,7 @@ defmodule HeroesOracle.Heroes.Talent do
   @doc false
   def changeset(%Talent{} = talent, attrs) do
     talent
-    |> cast(attrs, [:name, :level, :description])
-    |> validate_required([:name, :level, :description])
+    |> cast(attrs, [:hero_id, :level, :name, :description])
+    |> validate_required([:hero_id, :level, :name, :description])
   end
 end

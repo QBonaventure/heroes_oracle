@@ -1,0 +1,5 @@
+<h2>New Talent</h2>
+
+<%= render "form.html", Map.put(assigns, :action, hero_talent_path(@conn, :create, @hero)) %>
+
+<span><%= link "Back", to: hero_talent_path(@conn, :index, @hero) %></span>
