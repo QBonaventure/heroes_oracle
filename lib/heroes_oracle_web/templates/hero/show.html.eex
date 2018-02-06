@@ -11,3 +11,29 @@
 
 <span><%= link "Edit", to: hero_path(@conn, :edit, @hero) %></span>
 <span><%= link "Back", to: hero_path(@conn, :index) %></span>
+
+
+<div>
+  <h3>
+    Talents
+    <span><%= link "[edit]", to: hero_talent_path(@conn, :index, @hero.id) %></span>
+  </h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Level</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= for talent <- @hero.talents do %>
+        <tr>
+          <td><%= talent.level %></td>
+          <td><%= talent.name %></td>
+          <td><%= talent.description %></td>
+        </tr>
+      <%= end %>
+    </tbody>
+  <table>
+</div>

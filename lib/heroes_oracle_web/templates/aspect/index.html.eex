@@ -1,13 +1,24 @@
-<tr>
-  <td><%= @hero.name %></td>
+<h2>Listing Heroes aspects</h2>
 
-<%= for aspect <- @hero.aspects do %>
-  <%= aspect.hero_role %>
-    <%= aspect.hero_type  %>
-<%= end %>
-  <td class="text-right">
-    <span><%= link "Show", to: hero_path(@conn, :show, @hero), class: "btn btn-default btn-xs" %></span>
-    <span><%= link "Edit", to: hero_path(@conn, :edit, @hero), class: "btn btn-default btn-xs" %></span>
-    <span><%= link "Delete", to: hero_path(@conn, :delete, @hero), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
-  </td>
-</tr>
+<table class="table">
+  <thead>
+    <tr>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for heroes_aspects <- @hero.aspects do %>
+    <tr>
+
+      <td class="text-right">
+        <span><%= link "Show", to: hero_aspect_path(@conn, :show, @hero, heroes_aspects), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Edit", to: hero_aspect_path(@conn, :edit, @hero, heroes_aspects), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Delete", to: hero_aspect_path(@conn, :delete, @hero, heroes_aspects), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Heroes aspects", to: hero_aspect_path(@conn, :new, @hero) %></span>

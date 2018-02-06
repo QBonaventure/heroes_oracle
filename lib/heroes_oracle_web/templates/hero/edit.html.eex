@@ -2,5 +2,4 @@
 
 <%= render "form.html", Map.put(assigns, :action, hero_path(@conn, :update, @hero)) %>
 
-<span><%= link "Talents", to: hero_talent_path(@conn, :index, @hero.id) %></span>
-<span><%= link "Back", to: hero_path(@conn, :index) %></span>
+<span><%= link "Back", to: hero_path(@conn, :show, @hero.id) %></span>

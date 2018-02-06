@@ -9,6 +9,7 @@ defmodule HeroesOracle.Heroes.Hero do
     has_many :talents, Talent
     belongs_to :role, HeroRole, foreign_key: :role_id
     belongs_to :type, HeroType, foreign_key: :type_id
+    has_many :aspects, Aspect
 
     timestamps()
   end

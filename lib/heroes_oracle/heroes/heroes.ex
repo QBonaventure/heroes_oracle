@@ -23,7 +23,6 @@ defmodule HeroesOracle.Heroes do
     |> Repo.preload(:role)
     |> Repo.preload(:type)
     |> Repo.preload(:talents)
-    # |> Repo.preload(:aspects)
   end
 
   @doc """
@@ -46,7 +45,6 @@ defmodule HeroesOracle.Heroes do
     |> Repo.preload(:role)
     |> Repo.preload(:type)
     |> Repo.preload(:talents)
-    # |> Repo.preload(:aspects)
   end
 
   @doc """
@@ -124,102 +122,6 @@ defmodule HeroesOracle.Heroes do
   end
 
 
-
-  alias HeroesOracle.Heroes.Aspect
-
-  @doc """
-  Returns the list of aspects.
-
-  ## Examples
-
-      iex> list_aspects()
-      [%Aspect{}, ...]
-
-  """
-  def list_aspects do
-    Repo.all(Aspect)
-  end
-
-  @doc """
-  Gets a single aspect.
-
-  Raises `Ecto.NoResultsError` if the Aspect does not exist.
-
-  ## Examples
-
-      iex> get_aspect!(123)
-      %Aspect{}
-
-      iex> get_aspect!(456)
-      ** (Ecto.NoResultsError)
-
-  """
-  def get_aspect!(id), do: Repo.get!(Aspect, id)
-
-  @doc """
-  Creates a aspect.
-
-  ## Examples
-
-      iex> create_aspect(%{field: value})
-      {:ok, %Aspect{}}
-
-      iex> create_aspect(%{field: bad_value})
-      {:error, %Ecto.Changeset{}}
-
-  """
-  def create_aspect(attrs \\ %{}) do
-    %Aspect{}
-    |> Aspect.changeset(attrs)
-    |> Repo.insert()
-  end
-
-  @doc """
-  Updates a aspect.
-
-  ## Examples
-
-      iex> update_aspect(aspect, %{field: new_value})
-      {:ok, %Aspect{}}
-
-      iex> update_aspect(aspect, %{field: bad_value})
-      {:error, %Ecto.Changeset{}}
-
-  """
-  def update_aspect(%Aspect{} = aspect, attrs) do
-    aspect
-    |> Aspect.changeset(attrs)
-    |> Repo.update()
-  end
-
-  @doc """
-  Deletes a Aspect.
-
-  ## Examples
-
-      iex> delete_aspect(aspect)
-      {:ok, %Aspect{}}
-
-      iex> delete_aspect(aspect)
-      {:error, %Ecto.Changeset{}}
-
-  """
-  def delete_aspect(%Aspect{} = aspect) do
-    Repo.delete(aspect)
-  end
-
-  @doc """
-  Returns an `%Ecto.Changeset{}` for tracking aspect changes.
-
-  ## Examples
-
-      iex> change_aspect(aspect)
-      %Ecto.Changeset{source: %Aspect{}}
-
-  """
-  def change_aspect(%Aspect{} = aspect) do
-    Aspect.changeset(aspect, %{})
-  end
 
   alias HeroesOracle.Heroes.Talent
 
@@ -315,5 +217,293 @@ defmodule HeroesOracle.Heroes do
   """
   def change_talent(%Talent{} = talent) do
     Talent.changeset(talent, %{})
+  end
+
+  alias HeroesOracle.Heroes.RefAspectType
+
+  @doc """
+  Returns the list of ref_aspects_types.
+
+  ## Examples
+
+      iex> list_ref_aspects_types()
+      [%RefAspectType{}, ...]
+
+  """
+  def list_ref_aspects_types do
+    Repo.all(RefAspectType)
+  end
+
+  @doc """
+  Gets a single ref_aspect_type.
+
+  Raises `Ecto.NoResultsError` if the Ref aspect type does not exist.
+
+  ## Examples
+
+      iex> get_ref_aspect_type!(123)
+      %RefAspectType{}
+
+      iex> get_ref_aspect_type!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_ref_aspect_type!(id), do: Repo.get!(RefAspectType, id)
+
+  @doc """
+  Creates a ref_aspect_type.
+
+  ## Examples
+
+      iex> create_ref_aspect_type(%{field: value})
+      {:ok, %RefAspectType{}}
+
+      iex> create_ref_aspect_type(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_ref_aspect_type(attrs \\ %{}) do
+    %RefAspectType{}
+    |> RefAspectType.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a ref_aspect_type.
+
+  ## Examples
+
+      iex> update_ref_aspect_type(ref_aspect_type, %{field: new_value})
+      {:ok, %RefAspectType{}}
+
+      iex> update_ref_aspect_type(ref_aspect_type, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_ref_aspect_type(%RefAspectType{} = ref_aspect_type, attrs) do
+    ref_aspect_type
+    |> RefAspectType.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a RefAspectType.
+
+  ## Examples
+
+      iex> delete_ref_aspect_type(ref_aspect_type)
+      {:ok, %RefAspectType{}}
+
+      iex> delete_ref_aspect_type(ref_aspect_type)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_ref_aspect_type(%RefAspectType{} = ref_aspect_type) do
+    Repo.delete(ref_aspect_type)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking ref_aspect_type changes.
+
+  ## Examples
+
+      iex> change_ref_aspect_type(ref_aspect_type)
+      %Ecto.Changeset{source: %RefAspectType{}}
+
+  """
+  def change_ref_aspect_type(%RefAspectType{} = ref_aspect_type) do
+    RefAspectType.changeset(ref_aspect_type, %{})
+  end
+
+  alias HeroesOracle.Heroes.RefAspectValue
+
+  @doc """
+  Returns the list of aspects_values.
+
+  ## Examples
+
+      iex> list_aspects_values()
+      [%AspectValue{}, ...]
+
+  """
+  def list_aspects_values do
+    Repo.all(RefAspectValue)
+  end
+
+  @doc """
+  Gets a single aspect_value.
+
+  Raises `Ecto.NoResultsError` if the Aspect value does not exist.
+
+  ## Examples
+
+      iex> get_aspect_value!(123)
+      %AspectValue{}
+
+      iex> get_aspect_value!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_aspect_value!(id), do: Repo.get!(RefAspectValue, id)
+
+  @doc """
+  Creates a aspect_value.
+
+  ## Examples
+
+      iex> create_aspect_value(%{field: value})
+      {:ok, %AspectValue{}}
+
+      iex> create_aspect_value(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_aspect_value(attrs \\ %{}) do
+    %RefAspectValue{}
+    |> RefAspectValue.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a aspect_value.
+
+  ## Examples
+
+      iex> update_aspect_value(aspect_value, %{field: new_value})
+      {:ok, %AspectValue{}}
+
+      iex> update_aspect_value(aspect_value, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_aspect_value(%RefAspectValue{} = aspect_value, attrs) do
+    aspect_value
+    |> RefAspectValue.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a AspectValue.
+
+  ## Examples
+
+      iex> delete_aspect_value(aspect_value)
+      {:ok, %AspectValue{}}
+
+      iex> delete_aspect_value(aspect_value)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_aspect_value(%RefAspectValue{} = aspect_value) do
+    Repo.delete(aspect_value)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking aspect_value changes.
+
+  ## Examples
+
+      iex> change_aspect_value(aspect_value)
+      %Ecto.Changeset{source: %AspectValue{}}
+
+  """
+  def change_aspect_value(%RefAspectValue{} = aspect_value) do
+    RefAspectValue.changeset(aspect_value, %{})
+  end
+
+  alias HeroesOracle.Heroes.Aspect
+
+  @doc """
+  Returns the list of heroes_aspects.
+
+  ## Examples
+
+      iex> list_heroes_aspects()
+      [%Aspect{}, ...]
+
+  """
+  def list_heroes_aspects do
+    Repo.all(Aspect)
+  end
+
+  @doc """
+  Gets a single heroes_aspects.
+
+  Raises `Ecto.NoResultsError` if the Heroes aspects does not exist.
+
+  ## Examples
+
+      iex> get_heroes_aspects!(123)
+      %Aspects{}
+
+      iex> get_heroes_aspects!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_heroes_aspects!(id), do: Repo.get!(Aspect, id)
+
+  @doc """
+  Creates a heroes_aspects.
+
+  ## Examples
+
+      iex> create_heroes_aspects(%{field: value})
+      {:ok, %Aspects{}}
+
+      iex> create_heroes_aspects(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_heroes_aspects(attrs \\ %{}) do
+    %Aspect{}
+    |> Aspect.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a heroes_aspects.
+
+  ## Examples
+
+      iex> update_heroes_aspects(heroes_aspects, %{field: new_value})
+      {:ok, %Aspects{}}
+
+      iex> update_heroes_aspects(heroes_aspects, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_heroes_aspects(%Aspect{} = heroes_aspects, attrs) do
+    heroes_aspects
+    |> Aspect.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a Aspects.
+
+  ## Examples
+
+      iex> delete_heroes_aspects(heroes_aspects)
+      {:ok, %Aspects{}}
+
+      iex> delete_heroes_aspects(heroes_aspects)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_heroes_aspects(%Aspect{} = heroes_aspects) do
+    Repo.delete(heroes_aspects)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking heroes_aspects changes.
+
+  ## Examples
+
+      iex> change_heroes_aspects(heroes_aspects)
+      %Ecto.Changeset{source: %Aspects{}}
+
+  """
+  def change_heroes_aspects(%Aspect{} = heroes_aspects) do
+    Aspect.changeset(heroes_aspects, %{})
   end
 end

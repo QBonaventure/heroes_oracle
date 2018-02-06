@@ -1,0 +1,8 @@
+<h2>Show Heroes aspects</h2>
+
+<ul>
+
+</ul>
+
+<span><%= link "Edit", to: hero_aspect_path(@conn, :edit, @hero) %></span>
+<span><%= link "Back", to: hero_aspect_path(@conn, :index, @hero) %></span>
