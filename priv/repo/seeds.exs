@@ -11,7 +11,14 @@
 # and so on) as they will fail if something goes wrong.
 
 alias HeroesOracle.Repo
-alias HeroesOracle.Heroes.{HeroRole, HeroType, RefAspectType}
+alias HeroesOracle.Heroes.{HeroRole, HeroType, RefAspectType, RefAspectValue}
+alias HeroesOracle.Common.String
+
+Repo.insert!(%String{string: "very low"})
+Repo.insert!(%String{string: "low"})
+Repo.insert!(%String{string: "average"})
+Repo.insert!(%String{string: "high"})
+Repo.insert!(%String{string: "very high"})
 
 Repo.insert!(%HeroRole{name: "warrior"})
 Repo.insert!(%HeroRole{name: "assassin"})
@@ -30,3 +37,31 @@ Repo.insert!(%HeroType{name: "siege"})
 Repo.insert!(%HeroType{name: "utility"})
 
 Repo.insert!(%RefAspectType{name: "sustain dmg"})
+Repo.insert!(%RefAspectType{name: "burst dmg"})
+Repo.insert!(%RefAspectType{name: "dmg AA/spell"})
+Repo.insert!(%RefAspectType{name: "sustain heal"})
+Repo.insert!(%RefAspectType{name: "burst heal"})
+Repo.insert!(%RefAspectType{name: "cc"})
+Repo.insert!(%RefAspectType{name: "dive / mobility"})
+Repo.insert!(%RefAspectType{name: "globality"})
+Repo.insert!(%RefAspectType{name: "duellist"})
+Repo.insert!(%RefAspectType{name: "monotarget PvE"})
+Repo.insert!(%RefAspectType{name: "camps"})
+Repo.insert!(%RefAspectType{name: "sololane"})
+Repo.insert!(%RefAspectType{name: "waveclear"})
+Repo.insert!(%RefAspectType{name: "double soak"})
+Repo.insert!(%RefAspectType{name: "push capacity"})
+Repo.insert!(%RefAspectType{name: "cd"})
+Repo.insert!(%RefAspectType{name: "mana consumption"})
+Repo.insert!(%RefAspectType{name: "base armor"})
+
+# Repo.insert!(%RefAspectValue{name: "very low", aspect_type_id: 1})
+# Repo.insert!(%RefAspectValue{name: "low", aspect_type_id: 1})
+# Repo.insert!(%RefAspectValue{name: "average", aspect_type_id: 1})
+# Repo.insert!(%RefAspectValue{name: "high", aspect_type_id: 1})
+# Repo.insert!(%RefAspectValue{name: "very high", aspect_type_id: 1})
+# Repo.insert!(%RefAspectValue{name: "very low", aspect_type_id: 2})
+# Repo.insert!(%RefAspectValue{name: "low", aspect_type_id: 2})
+# Repo.insert!(%RefAspectValue{name: "average", aspect_type_id: 2})
+# Repo.insert!(%RefAspectValue{name: "high", aspect_type_id: 2})
+# Repo.insert!(%RefAspectValue{name: "very high", aspect_type_id: 2})

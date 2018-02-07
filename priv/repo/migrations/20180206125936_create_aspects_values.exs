@@ -3,7 +3,7 @@ defmodule HeroesOracle.Repo.Migrations.CreateAspectsValues do
 
   def change do
     create table(:ref_aspects_values) do
-      add :value, :string
+      add :value_string_id, references(:strings, on_delete: :nothing)
       add :aspect_type_id, references(:ref_aspects_types, on_delete: :nothing)
     end
 

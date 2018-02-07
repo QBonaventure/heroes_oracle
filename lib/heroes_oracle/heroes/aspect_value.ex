@@ -5,14 +5,14 @@ defmodule HeroesOracle.Heroes.RefAspectValue do
 
 
   schema "ref_aspects_values" do
-    field :value, :string
+    field :value_string_id, :string
     field :aspect_type_id, :id
   end
 
   @doc false
   def changeset(%RefAspectValue{} = aspect_value, attrs) do
     aspect_value
-    |> cast(attrs, [:value])
-    |> validate_required([:value])
+    |> cast(attrs, [:value_string_id])
+    |> validate_required([:value_string_id])
   end
 end
