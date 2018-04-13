@@ -51,10 +51,10 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :heroes_oracle, HeroesOracle.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "ftc_members",
+  username: "heroes_oracle_app",
   password: "password",
-  database: "heroes_oracle_dev",
-  hostname: "localhost",
+  database: "heroes_oracle",
+  hostname: "db",
   pool_size: 10
 
 

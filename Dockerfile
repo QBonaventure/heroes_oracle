@@ -3,7 +3,8 @@ FROM elixir:alpine
 RUN apk --update --no-cache add \
   nodejs-npm \
   make \
-  g++
+  g++ \
+  inotify-tools
 
 RUN mkdir /app
 WORKDIR /app

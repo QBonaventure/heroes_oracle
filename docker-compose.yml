@@ -1,0 +1,35 @@
+version: "3.3"
+volumes:
+  db-data:
+services:
+  app:
+    image: qbonaventure/heroes_oracle
+    links:
+      - db
+    ports:
+      - "8282:4000"
+    volumes:
+      - .:/app:z
+    environment:
+      - MIX_ENV:dev
+    tty: true
+    command: mix do ecto.migrate, phx.server
+    depends_on:
+      - db
+    networks:
+      default:
+        ipv4_address: 172.65.0.10
+  db:
+    # build:
+      # context: .
+      # dockerfile: .docker/db/Dockerfile
+    image: postgres:10-alpine
+    volumes:
+      - db-data:/var/lib/postgresql/data
+      - .docker/db/init.sql:/docker-entrypoint-initdb.d/1-init.sql
+networks:
+  default:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.65.0.0/16
